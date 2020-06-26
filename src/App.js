@@ -9,7 +9,7 @@ function App() {
     useEffect(() => {
         (async () => {
             const { data } = await axiox.get(
-                'http://api.ipstack.com/check?access_key=b826e9e1b409adcd7b8abc189a74ea81'
+                'http://api.ipstack.com/check?access_key=YOUR_ACCESS_KEY'
             );
 
             setCountryInfo(data);
