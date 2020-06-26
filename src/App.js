@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import axiox from 'axios';
 import './App.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [countryInfo, setCountryInfo] = useState('');
+    const [location, setLocation] = useState('');
+
+    useEffect(() => {
+        (async () => {
+            const { data } = await axiox.get(
+                'http://api.ipstack.com/check?access_key=b826e9e1b409adcd7b8abc189a74ea81'
+            );
+
+            setCountryInfo(data);
+            setLocation(data.location);
+        })();
+    }, []);
+
+    return (
+        <div className='container'>
+            <div className='countryInfo'>
+                <p>
+                    You are from {countryInfo.country_name} {location.country_flag_emoji}
+                </p>
+            </div>
+        </div>
+    );
 }
 
 export default App;
