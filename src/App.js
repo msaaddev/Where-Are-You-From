@@ -21,7 +21,7 @@ function App() {
         <div className='container'>
             <div className='countryInfo'>
                 <p>
-                    You are living in {countryInfo.country_name} {location.country_flag_emoji} 
+                    You are living in {countryInfo.country_name} {location.country_flag_emoji}
                 </p>
             </div>
         </div>
