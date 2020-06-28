@@ -4,15 +4,15 @@ import "./App.css";
 
 function App() {
   const [countryInfo, setCountryInfo] = useState("");
+  const [location, setLocation] = useState("");
 
   useEffect(() => {
     (async () => {
       const { data } = await axiox.get(
-        "https://api.ipgeolocationapi.com/geolocate",
+        "http://api.ipstack.com/check?access_key=YOUR_API_ACCESS_KEY",
       );
-      console.log(data);
-
       setCountryInfo(data);
+      setLocation(data.location);
     })();
   }, []);
 
@@ -20,7 +20,7 @@ function App() {
     <div className="container">
       <div className="countryInfo">
         <p>
-          {` You are living in ${countryInfo.name} 😈`}
+          {` You are living in ${countryInfo.country_name} ${location.country_flag_emoji}`}
         </p>
       </div>
     </div>
