@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import axiox from 'axios';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import axiox from "axios";
+import "./App.css";
 
 function App() {
-    const [countryInfo, setCountryInfo] = useState('');
-    const [location, setLocation] = useState('');
+  const [countryInfo, setCountryInfo] = useState("");
 
-    useEffect(() => {
-        (async () => {
-            const { data } = await axiox.get(
-                'http://api.ipstack.com/check?access_key=YOUR_ACCESS_KEY'
-            );
+  useEffect(() => {
+    (async () => {
+      const { data } = await axiox.get(
+        "https://api.ipgeolocationapi.com/geolocate",
+      );
+      console.log(data);
 
-            setCountryInfo(data);
-            setLocation(data.location);
-        })();
-    }, []);
+      setCountryInfo(data);
+    })();
+  }, []);
 
-    return (
-        <div className='container'>
-            <div className='countryInfo'>
-                <p>
-                    You are living in {countryInfo.country_name} {location.country_flag_emoji}
-                </p>
-            </div>
-        </div>
-    );
+  return (
+    <div className="container">
+      <div className="countryInfo">
+        <p>
+          {` You are living in ${countryInfo.name} 😈`}
+        </p>
+      </div>
+    </div>
+  );
 }
 
 export default App;
