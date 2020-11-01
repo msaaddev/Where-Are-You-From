@@ -5,8 +5,8 @@
     margin-top: 320px;
 }
 
-.countryInfo p {
-    font-size: 26px;
+.countryInfo h1 {
+    font-size: 2.5em;
     font-family: 'Roboto', sans-serif;
     color: #ffffff;
 }
